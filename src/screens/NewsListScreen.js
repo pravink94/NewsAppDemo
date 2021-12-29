@@ -27,8 +27,9 @@ const NewsListScreen = () => {
                 keyExtractor={(item, index) => item.id}
                 renderItem={({ item, index }) => {
                     return (
-                        <View style={styles.item}>
-                            <Text>{item.name}</Text>
+                        <View style={styles.viewStyle}>
+                            <Text style={styles.name}>{item.name}</Text>
+                            <Text style={styles.address}>{item.address.city}</Text>
                         </View>
                     );
                 }} />
@@ -43,10 +44,16 @@ const styles = StyleSheet.create({
     parent: {
         flex: 1,
     },
-    item: {
-        height:50,
+    viewStyle: {
+        marginVertical:10
+    },
+    name: {
+        fontSize: 16,
         color: 'black',
-        
+    },
+    address: {
+        fontSize: 13,
+        color: 'gray',
     }
 });
 
