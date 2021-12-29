@@ -13,7 +13,7 @@ export const APPProvider = (props) => {
     }
 
     const getAllUSers = async () => {
-        let url = webServices.getUsers
+        let url = webServices.getUsers;
         return await request(url, 'get', {})
     }
 
@@ -28,7 +28,9 @@ export const APPProvider = (props) => {
                 },
             });
 
-            return getResponse(response)
+            const data = getResponse(response);
+            // console.log("data", data);
+            return data
         }
         catch (e) {
             console.log(e)
@@ -37,7 +39,7 @@ export const APPProvider = (props) => {
     }
 
     const getResponse = (response) => {
-        console.log(JSON.stringify(response.data))
+        // console.log("JSON.stringify",JSON.stringify(response.data))
 
         if (response.data && response.data.success == false) {
             let result = {
@@ -48,43 +50,12 @@ export const APPProvider = (props) => {
             return result
         }
         else {
-            let data = response.data
-            if (data && data.status == '200') {
-                let result = {
-                    status: true,
-                    data: data.data,
-                    subscription: data && data.subscription ? data.subscription : null,
-                    error: data.message
-                }
-                return result
-            }
-            else if (data && data.status == 'OK') {
-                let result = {
-                    status: true,
-                    data: data.data,
-                    subscription: data && data.subscription ? data.subscription : null,
-                    error: data.message
-                }
-                return result
-            }
-            else if (data && data.status == '401') {
-                // AsyncStorage.clear()
-                let result = {
-                    status: false,
-                    data: data,
-                    error: data.message
-                }
-                return result
-            }
-            else {
-                let result = {
-                    status: false,
-                    data: '',
-                    error: data.message
-                }
-                return result
-            }
 
+            let data = response.data
+
+            return data
+
+            
         }
     }
 

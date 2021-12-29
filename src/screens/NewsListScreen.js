@@ -8,8 +8,8 @@ const NewsListScreen = () => {
     const [users, setAllUsers] = useState([]);
 
     useEffect(async () => {
-        const allUSers = await getAllUSers()
-        console.log(allUSers);
+        const allUSers = await getAllUSers();
+        console.log("allUSers",allUSers);
         setAllUsers(allUSers);
         return () => {
 
@@ -19,17 +19,18 @@ const NewsListScreen = () => {
     return (
         <View style={styles.parent}>
             <Text>NewsListScreen</Text>
+            <Text>{users.length}</Text>
 
             <FlatList
-                style={styles.list}
                 data={users}
-                keyExtractor={(user) => user.id}
-                renderItem={({ user}) => {
+                keyExtractor={user => user.id}
+                renderItem={({ user }) => {
+                    console.log("IndexScreen FlatList renderItem ->" + user);
                     return (
                         <View style={styles.item}>
-                            <Text>{user.name}</Text>
+
                         </View>
-                    )
+                    );
                 }} />
         </View>
     );
@@ -42,9 +43,10 @@ const styles = StyleSheet.create({
     parent: {
         flex: 1,
     },
-    item:{
-        color:'black',
-        
+    item: {
+        height:50,
+        color: 'black',
+        backgroundColor: 'black'
     }
 });
 
