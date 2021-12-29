@@ -19,7 +19,7 @@ const NewsListScreen = () => {
     return (
         <View style={styles.parent}>
             <Text>NewsListScreen</Text>
-            
+
             <FlatList
                 style={styles.list}
                 data={users}
@@ -43,8 +43,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     item:{
-        color:'white',
-        backgroundColor:'black'
+        color:'black',
         
     }
 });
